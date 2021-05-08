@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<!-- 시간마다 업로드되는 시계 -->
+<!-- 사용자 이름 적으면 hello 사용자, localStorage삭제 전까지 한번 기입한 내용 기억 -->
+<html>
+    <head>
+        <link rel = "stylesheet" href = "index.css"/>
+        <title>Something</title> 
+
+    </head> 
+    <body>
+        <div class = "js-clock">
+            <h1 class="js-title">00:00</h1>
+        </div>
+        <!-- index.js에서 clock -->
+        <form class = "js-form form" >
+            <input type = "text" placeholder="what is your name?"> 
+        </form>
+        <h4 class = "js-greetings greetings"></h4>
+        <!-- greeting.js에서 user이름 localstorage에 저장해서 표시함 -->
+        <form class = "js-toDoForm"> 
+            <input type = "text" placeholder = "Write a to do"/>
+        </form>
+        <ul class = "js-toDoList">
+    
+        </ul>
+        <script src = todo.js></script>
+        <script src = "index.js"></script>
+        <script src = "greeting.js"></script>
+        <script src = "bg.js"></script>
+        <script src = "weather.js"></script>
+    </body> 
+</html> 
