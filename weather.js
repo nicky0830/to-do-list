@@ -10,6 +10,8 @@ const API_KEY = "67cc9c91c4e1c6043c4b48bcf42171fd";
 function getWeather(lat, lng){ 
     fetch(`https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lng}&appid=${API_KEY}`)
 }
+// loadCoord가 null이면 아래 handleGeoSucess 실행되어서 getWeather가 실행되지만 network를 확인하면 fetch된 api가 없다 
+// 
 
 function saveCoords(coordsObj){ 
     localStorage.setItem(COORDS, JSON.stringify(coordsObj))
@@ -38,15 +40,16 @@ function handleGeoError(){
 function askForCoords(){
     navigator.geolocation.getCurrentPosition(handleGeoSuccess, handleGeoError);
     // navigator(API의 종류: window, document 등등이 있음). navigator의 메서드 중 geolocation의 getCurrentPosition은 뒤 두개의 함수를 requirement로 가진다 
-
+    // 이때 handleGeoSucces의 매개변수에 들어가는 건 이를 통해 얻은 current position(잘 모르겠으면 상수에 넣어서 console.log으로 메서드 확인해보기)
 }
 
 function loadCoords(){
-    const loadedCords = localStorage.getItem(COORDS);
-    if(loadedCords === null ){ 
+    const loadedCoords = localStorage.getItem(COORDS);
+    if(loadedCoords === null ){ 
         askForCoords();
     } else{ 
-     const parseCoords = JSON.parse(loadCoords)
+     const parseCoords = JSON.parse(loadedCoords);
+     getWeather(parseCoords.latitude, parseCoords.longitude);
 
     }
 } 
