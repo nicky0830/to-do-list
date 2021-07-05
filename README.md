@@ -1,2 +1,2 @@
 # to-do-list
-This is my first real toy project. Good luck!
+This is my first real toy project. - master branch
